@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans/" 
+	 xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		 http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<context:component-scan base-package="com.fashion.legou.controller" />
+
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/view/" />
+		<property name="configLocation" value="classpath:freemarker.properties" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean id="viewResolver"
+					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="cache" value="true" />
+					<property name="prefix" value="" />
+					<property name="suffix" value=".ftl" />
+					<property name="contentType" value="text/html;charset=UTF-8" />
+					<property name="requestContextAttribute" value="request" />
+					<property name="exposeSpringMacroHelpers" value="true" />
+					<property name="exposeRequestAttributes" value="true" />
+					<property name="exposeSessionAttributes" value="true" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<context:annotation-config />
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/paging/**" />
+			<!-- <mvc:exclude-mapping path="/login/login.html" /> -->
+			<bean class="com.fashion.legou.util.BasePathInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+	<mvc:resources mapping="/styles/**" location="/WEB-INF/css/" />
+	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
+
+	<!-- <import resource="simplesm-context.xml" />
+	<aop:aspectj-autoproxy />
+
+	<bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheClientFactory">
+			<bean
+				class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl" />
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.DefaultAddressProvider">
+				<property name="address" value="127.0.0.1:11211" />
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true" />
+			</bean>
+		</property>
+	</bean> -->
+
+</beans>

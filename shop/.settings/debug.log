@@ -1,0 +1,2 @@
+[0607/223014:ERROR:renderer_main.cc(227)] Running without renderer sandbox
+[0607/223014:INFO:CONSOLE(12)] "Uncaught SyntaxError: Unexpected token }", source: http://127.0.0.1:8020/HelloHBuilder/index.html (12)

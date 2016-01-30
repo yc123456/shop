@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fashion.legou.dao.UserMapper">
+	<resultMap id="ResultMap" type="com.fashion.legou.entity.User">
+		<id column="id" property="id" />
+		<result column="created_at" property="createdAt" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="creator" property="creator" />
+		<result column="modifier" property="modifier" />
+		<result column="user_name" property="username" />
+		<result column="user_pwd" property="userPwd" />
+		<result column="role_id" property="roleId" />
+		<result column="last_login_time" property="lastLoginTime" />
+		<result column="role_type" property="roleType" />
+		<result column="disable_flag" property="disableFlag" />
+		<result column="login_status" property="loginStatus" />
+		<result column="email" property="email" />
+	</resultMap>
+	<sql id="columns">id,created_at,updated_at,creator,modifier,user_name,user_pwd,role_id,last_login_time,role_type,disable_flag,login_status,email
+	</sql>
+	<select id="selectByUser" parameterType="com.fashion.legou.entity.User"
+		resultType="com.fashion.legou.entity.User" useCache="false">
+		SELECT
+		<include refid="columns" />
+		FROM sys_user
+		where email=#{email} and user_pwd=#{userPwd}
+	</select>
+	
+	<select id="findPage" useCache="true" resultMap="ResultMap" parameterType="com.fashion.legou.entity.Page">
+	select
+	<include refid="columns" />
+	from sys_user
+	<include refid="pagination" />
+	</select>
+	
+	<select id="findAll">
+	select
+	<include refid="columns" />
+	from sys_user
+	</select>
+
+	<sql id="pagination">
+		<if test="curPage != null">LIMIT #{curPage},#{pageSize}</if>
+	</sql>
+
+	<sql id="sorting">
+		<if test="orderBy != null and orderBy != ''">ORDER BY ${orderBy}</if>
+		<if test="orderBy == null or orderBy == ''">ORDER BY info.id DESC</if>
+	</sql>
+	
+	<sql id="condition">
+		-
+		<trim prefix="where" prefixOverrides="and">
+			<if test="userName != null and userName != ''">AND user_name like CONCAT('%',#{username},'%')</if>
+			<if test="userPwd != null and userPwd != ''">AND user_pwd = #{userPwd}</if>
+			<if test="lastLoginTime != null">AND last_login_time like
+				CONCAT('%',date_format(#{lastLoginTime},'%Y-%m-%d'),'%')</if>
+			<if test="roleType != null">AND role_type = #{roleType}</if>
+		</trim>
+	</sql>
+</mapper>
