@@ -47,17 +47,16 @@ public class FileUploadController {
 						// 重命名上传后的文件名
 						String fileName = "legou_" + file.getOriginalFilename();
 						// 定义上传路径
-						String path = "C:" + File.separator + "file" + File.separator + "workspace-sts-3.6.3.SR"
-								+ File.separator + "shop" + File.separator + "src" + File.separator + "main"
-								+ File.separator + "webapp" + File.separator + "WEB-INF" + File.separator + "upload"
-								+ File.separator + fileName;
+						String path = "C:" + File.separator + "git" + File.separator + "shop" + File.separator + "src"
+								+ File.separator + "main" + File.separator + "webapp" + File.separator + "WEB-INF"
+								+ File.separator + "upload" +File.separator+ fileName;
 						File localFile = new File(path);
 						file.transferTo(localFile);
 					}
 				}
 				// 记录上传该文件后的时间
 				int finaltime = (int) System.currentTimeMillis();
-				System.out.println((finaltime - pre)+"ms");
+				System.out.println((finaltime - pre) + "ms");
 			}
 
 		}
