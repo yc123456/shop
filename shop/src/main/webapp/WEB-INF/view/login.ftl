@@ -120,10 +120,7 @@
 			<li><a href="/oauth20/auth_qqProvider.html" title="使用腾讯QQ帐号登录" class="vender_icon icon_tencent" target="_blank"></a></li>
 			<li class="last_child"><a href="/oauth20/auth_weixinProvider.html" class="vender_icon icon_wechat" title="使用微信帐号登录" target="_blank"></a></li>
 		</ul>
-		<div class="qrcode">
-			<img src="http://pstatic.lagou.com/passport/static/pc/modules/common/img/qrcode_0ec6bff.jpg" alt="二维码">
-			<p>[ 扫码下载拉勾APP ]</p>
-		</div>
+
 	</div>
 </section>
 
