@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
 <meta content="乐购网是时尚消费品网站" name="description">
 <meta content="时尚,乐购网,乐购" name="keywords">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <title>找商品-时尚商品销售-乐购网</title>
 <link rel="stylesheet" type="text/css" href="/styles/style2.css"/>
-<script src="/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/js/jquery-1.12.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/jquery.form.js"></script>
 <script type="text/javascript">
            $(document).ready(function() {
@@ -104,7 +103,7 @@
 					<input id="submitLogin" type="button" class="btn btn_green btn_active btn_block btn_lg" value="登&nbsp;录">
 				</div>
 				<div class="input_item clearfix">
-					<h5 class="reg_now">还没有乐购帐号？<a href="../register/register.html">立即注册</a></h5>
+					<h5 class="reg_now">还没有乐购帐号？<a href="/register/register.html">立即注册</a></h5>
 				</div>
 				<input type="hidden" value = "" id = "isVisiable_request_form_verifyCode" />
 			</div>
@@ -121,10 +120,7 @@
 			<li><a href="/oauth20/auth_qqProvider.html" title="使用腾讯QQ帐号登录" class="vender_icon icon_tencent" target="_blank"></a></li>
 			<li class="last_child"><a href="/oauth20/auth_weixinProvider.html" class="vender_icon icon_wechat" title="使用微信帐号登录" target="_blank"></a></li>
 		</ul>
-		<div class="qrcode">
-			<img src="http://pstatic.lagou.com/passport/static/pc/modules/common/img/qrcode_0ec6bff.jpg" alt="二维码">
-			<p>[ 扫码下载拉勾APP ]</p>
-		</div>
+
 	</div>
 </section>
 
@@ -132,7 +128,6 @@
 	<h4 class="slogan">— 专注打造时尚品牌购物 —</h4>
 </footer>
 <!-- 页面主体END -->	
-
 </body>
 </html>
 
